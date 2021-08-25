@@ -6,9 +6,13 @@ from django.http import HttpResponse
 
 def my_generator():
     x = 0
-    while x < 5:
+    while True:
         yield x
         x += 1
 
+
+my_g = my_generator()
+
+
 def home(request):
-    return HttpResponse(my_generator())
+    return HttpResponse(next(my_g))
